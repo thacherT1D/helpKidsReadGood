@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  h1= theBook.name
+
+  a(href="/books/" + theBook.id + '/update') Edit
+
+  form(action='/books/' + theBook.id + '?_method=delete' method="POST")
+    div
+      button(type="submit" value="Delete") Delete

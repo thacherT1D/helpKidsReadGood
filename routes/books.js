@@ -7,7 +7,9 @@ function Books() {
 }
 
 router.get('/books', function(req, res, next) {
-  res.render('books/index');
+  books().select().then(function() {
+    res.render('books/', {allBooks: records});
+  });
 });
 
 router.get('/books/new', function(req, res, next) {
@@ -15,8 +17,17 @@ router.get('/books/new', function(req, res, next) {
 });
 
 router.post('/books', function(req, res, next) {
-  Books().insert({ name: req.body.book_name }).then(function () {
+  books().insert({
+    name: req.body.book_name
+  }).then(function () {
     res.redirect('/books');
+  });
+});
+
+router.get('/books/:id', function(req, res, next) {
+  books().where({ id: req.params.id}).first().then(function (record) {
+    console.log(record);
+    res.render('books/show', {theBook: record});
   });
 });
 

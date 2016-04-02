@@ -5,8 +5,13 @@ block content
 
   form(action="/books", method="post")
     div
-      Name
-      input(type="text" name="book_name")
+      div Author
+        input(type="text"
+        author="author_name")
 
-    div
-      input(type="submit")
+      div Title
+        input(type="text"
+        name="book_name")
+
+      div
+        input(type="submit")

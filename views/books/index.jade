@@ -4,3 +4,17 @@ block content
   h1 Books
 
   a(href="/books/new") New Book
+
+  table
+      thead
+        tr
+          th ID
+          th Name
+
+      tbody
+        for book in allBooks
+          tr
+            td= book.id
+            td= book.name
+            td
+              a(href='/books/' + book.id)= book.name
