@@ -10,11 +10,13 @@ block content
         tr
           th ID
           th Name
+          th Author
 
       tbody
         for book in allBooks
           tr
             td= book.id
             td= book.name
+            td= book.author
             td
               a(href='/books/' + book.id)= book.name

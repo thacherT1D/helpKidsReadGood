@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1 Update Book
+
+  form(action='/books/' + theBook.id + '/update?_method=put' method="post")
+    div
+      div Book
+        input(type="text" name="book_name" value= theBook.name)
+
+      div Author Name
+        input(type="text" name="book_author" value= theBook.author)
+
+    div
+      input(type="submit")
