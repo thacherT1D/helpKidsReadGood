@@ -9,14 +9,15 @@ block content
       thead
         tr
           th ID
-          th Name
+          th Title
           th Author
+          th Genre
 
       tbody
         for book in allBooks
           tr
             td= book.id
-            td= book.name
-            td= book.author
             td
-              a(href='/books/' + book.id)= book.name
+              a(href='/books/' + book.id)= book.title
+            td= book.author
+            td= book.genre

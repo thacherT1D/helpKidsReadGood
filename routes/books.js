@@ -7,9 +7,8 @@ function books() {
 }
 
 router.get('/books', function(req, res, next) {
-  books().select().then(function(records) {
-    res.render('books/index',
-    {allBooks: records});
+  books().select().then(function (records) {
+    res.render('books/index', {allBooks: records});
   });
 });
 
@@ -19,18 +18,16 @@ router.get('/books/new', function(req, res, next) {
 
 router.post('/books', function(req, res, next) {
   books().insert({
-    name: req.body.book_name,
+    title: req.body.book_title,
     author: req.body.book_author,
-    genre: req.body.book_genre,
-    rating: req.body.book_rating
+    genre: req.body.book_genre
   }).then(function () {
     res.redirect('/books');
   });
 });
 
 router.get('/books/:id', function(req, res, next) {
-  books().where({ id: req.params.id}).first().then(function (record) {
-    console.log(record);
+  books().where({id: req.params.id}).first().then(function (record) {
     res.render('books/show', {theBook: record});
   });
 });
@@ -49,10 +46,9 @@ router.delete('/books/:id', function(req, res, next) {
 
 router.put('/books/:id/update', function(req, res, next) {
   books().select().where({id: req.params.id}).first().update({
-    name: req.body.book_name,
+    title: req.body.book_title,
     author: req.body.book_author,
-    genre: req.body.book_genre,
-    rating: req.body.book_rating
+    genre: req.body.book_genre
   }).then(function () {
     res.redirect('/books');
   });

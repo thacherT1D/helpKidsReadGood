@@ -5,11 +5,18 @@ block content
 
   form(action='/books/' + theBook.id + '/update?_method=put' method="post")
     div
-      div Book
-        input(type="text" name="book_name" value= theBook.name)
-
-      div Author Name
+      div Book Title
+        input(type="text" name="book_title" value= theBook.title)
+      div Author
         input(type="text" name="book_author" value= theBook.author)
+      div
+        label Genre
+          input(type="text" name="book_genre" value= theBook.genre)
+          select(type="select" name="book_genre"")
+            option(value="fiction" selected= "fiction"===theBook.genre) Fiction
+            option(value="non-fiction" selected= "non-fiction"===theBook.genre) Non-fiction
+            option(value="biography" selected= "fiction"===theBook.genre) Biography
+            option(value="fan-fiction" selected= "fan-fiction"===theBook.genre) Fan-fiction
 
     div
       input(type="submit")

@@ -1,10 +1,12 @@
 extends ../layout
 
 block content
-  h1= theBook.name
+  h1= theBook.title
+  h2= theBook.author
 
-  a(href="/books/" + theBook.id + '/update') Edit
 
   form(action='/books/' + theBook.id + '?_method=delete' method="POST")
+    div
+      a(href="/books/" + theBook.id + '/update') Edit
     div
       button(type="submit" value="Delete") Delete

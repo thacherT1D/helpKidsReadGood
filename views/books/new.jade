@@ -6,12 +6,17 @@ block content
   form(action="/books", method="post")
     div
       div Author
-        input(type="text"
-        author="author_name")
+        input(type="text" name="book_author")
 
       div Title
-        input(type="text"
-        name="book_name")
+        input(type="text" name="book_title")
+
+      div Genre
+        input(type="select" name="book_genre")
+          option Fiction
+          option Non-fiction
+          option Biography
+          option Fan-fiction
 
       div
         input(type="submit")
