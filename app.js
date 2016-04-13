@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var books = require('./routes/books')
+var books = require('./routes/books');
+var authors = require('./routes/authors');
 
 var methodOverride = require('method-override');
 var app = express();
@@ -27,6 +28,7 @@ app.use(methodOverride('_method'));
 
 app.use('/', routes);
 app.use('/', books);
+app.use('/', authors);
 
 app.use('/users', users);
 
