@@ -7,7 +7,8 @@ function authors() {
 }
 
 router.get('/authors', function(req, res, next) {
-  authors().select().then(function (records) {
+  authors().select()
+  .then(function (records) {
     res.render('authors/index', {allAuthors: records});
   });
 });
@@ -28,7 +29,9 @@ router.post('/authors', function(req, res, next) {
 });
 
 router.get('/authors/:id', function(req, res, next) {
-  authors().where({id: req.params.id}).first().then(function (record) {
+  authors().where({id: req.params.id})
+  .first()
+  .then(function (record) {
     res.render('authors/show', {theAuthor: record});
   });
 });
@@ -46,7 +49,10 @@ router.delete('/authors/:id', function(req, res, next) {
 });
 
 router.put('/authors/:id/update', function(req, res, next) {
-  authors().select().where({id: req.params.id}).first().update({
+  authors().select()
+  .where({id: req.params.id})
+  .first()
+  .update({
     first: req.body.author_first,
     last: req.body.author_last,
     bio: req.body.author_bio,

@@ -3,8 +3,6 @@ extends ../layout
 block content
   h1 Books
 
-  a(href="/books/new") New Book
-
   table.table.table-striped
       thead
         tr
@@ -16,8 +14,10 @@ block content
       tbody
         for book in allBooks
           tr
-            td= book.id
+            td= book.book_id
             td
-              a(href='/books/' + book.id)= book.title
+              a(href='/books/' + book.book_id)= book.title
             td= book.genre
             td=book.first + ' ' + book.last
+
+  a.btn.btn-primary(href='/books/new', role='button') New Book

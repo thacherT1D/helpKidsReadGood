@@ -6,13 +6,13 @@ block content
   form(action='/authors/' + theAuthor.id + '/update?_method=put' method="post")
     div
       div Author First Name
-        input(type="text" name="book_title" value= theAuthor.first)
+        input(type="text" name="author_first" value= theAuthor.first)
       div Author Last Name
-        input(type="text" name="book_title" value= theAuthor.last)
+        input(type="text" name="author_last" value= theAuthor.last)
       div Author Bio
-        input(type="text" name="book_author" value= theAuthor.bio)
+        input(type="text" name="author_bio" value= theAuthor.bio)
       div Author URL
-        input(type="text" name="book_title" value= theAuthor.url)
+        input(type="text" name="author_url" value= theAuthor.url)
       
     div
       input(type="submit")

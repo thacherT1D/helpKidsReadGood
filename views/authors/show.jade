@@ -1,12 +1,16 @@
 extends ../layout
 
 block content
-  h1= theAuthor.first
-  h2= theAuthor.last
+  .container
+    img.img-responsive(src=theAuthor.url, alt='Responsive image')
+    h1= theAuthor.first + ' ' + theAuthor.last
+    p= theAuthor.bio
 
 
-  form(action='/authors/' + theAuthor.id + '?_method=delete' method="POST")
-    div
-      a(href="/authors/" + theAuthor.id + '/update') Edit
-    div
-      button(type="submit" value="Delete") Delete
+    form(action='/authors/' + theAuthor.id + '?_method=delete' method="POST")
+      div
+        a.btn.btn-primary(href="/authors/" + theAuthor.id + '/update') Edit
+
+        button(type="submit" value="Delete") Delete
+
+      a.btn.btn-primary(href='/authors/new', role='button') New Author

@@ -1,22 +1,15 @@
 extends ../layout
 
 block content
-  h1 New Book
+  .container
+    h1 New Book
 
-  form(action="/books", method="post")
-    div
-      div Author
-        input(type="text" name="book_author")
-
-      div Title
-        input(type="text" name="book_title")
-
-      div Genre
-        input(type="select" name="book_genre")
-          option Fiction
-          option Non-fiction
-          option Biography
-          option Fan-fiction
-
-      div
-        input(type="submit")
+    form(action='/books', method='post')
+      .row
+        .col-md-12
+          fieldset.form-group
+            label(for='book_title') Book Title
+            input.form-control(type='text', name='book_title')          
+        .col-md-12
+          button.btn.btn-default(type='submit') Submit
+        

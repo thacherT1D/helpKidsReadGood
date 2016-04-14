@@ -1,7 +1,27 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p to authors
-  p to books
+  .container
+    h1 Welcome to Galvanize Reads
+    .row
+      .col-md-6
+        h2 Books
+          .col-md-12
+            img(src='http://lorempixel.com/400/200/', alt='books')
+          .col-md-12
+            a.btn.btn-primary.btn-md.btn-block(href='/books', role='button').button Books
+      .col-md-6
+        h2 Authors
+          .col-md-12
+            img(src='http://lorempixel.com/400/200/', alt='books')
+          .col-md-12
+            a.btn.btn-primary.btn-md.btn-block(href='/authors', role='button').button Authors
+
+      .row
+        .col-md-12.text-center
+          p
+            small © Read Books and Be Happy.
+        .col-md-12.text-center
+          p
+            small Made with Love in Seattle.
+  

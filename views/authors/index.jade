@@ -3,8 +3,6 @@ extends ../layout
 block content
   h1 Authors
 
-  a(href="/authors/new") New Author
-
   table.table.table-striped
       thead
         tr
@@ -17,3 +15,5 @@ block content
             td= author.id
             td 
               a(href='/authors/' + author.id)= author.first + ' ' + author.last
+
+  a.btn.btn-primary(href='/authors/new', role='button') New Author
