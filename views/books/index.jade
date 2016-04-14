@@ -14,7 +14,7 @@ block content
       tbody
         for book in allBooks
           tr
-            td= book.book_id
+            td= book.id
             td
               a(href='/books/' + book.book_id)= book.title
             td= book.genre

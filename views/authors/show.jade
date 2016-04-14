@@ -2,15 +2,15 @@ extends ../layout
 
 block content
   .container
-    img.img-responsive(src=theAuthor.url, alt='Responsive image')
+    img.img-responsive(src=theAuthor.url, alt='No Author Image Available')
     h1= theAuthor.first + ' ' + theAuthor.last
     p= theAuthor.bio
 
 
     form(action='/authors/' + theAuthor.id + '?_method=delete' method="POST")
       div
-        a.btn.btn-primary(href="/authors/" + theAuthor.id + '/update') Edit
+        a.btn.btn-primary(href="/authors/" + theAuthor.id + '/update').button Edit
 
-        button(type="submit" value="Delete") Delete
-
-      a.btn.btn-primary(href='/authors/new', role='button') New Author
+        button.btn.btn-primary(type="submit" value="Delete").button Delete
+        
+        a.btn.btn-primary(href="/authors/").button Back to Authors

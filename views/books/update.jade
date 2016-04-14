@@ -1,21 +1,23 @@
 extends ../layout
 
 block content
-  h1 Update Book
-
-  form(action='/books/' + theBook.id + '/update?_method=put' method="post").form.form-inline
-    div
-      div Book Title
-        input(type="text" name="book_title" value= theBook.title)
-      lable Author : 
-        p=theBook.first + ' ' + theBook.last
-      div
-        label Genre
-          select.form-control(type="select" name="book_genre")
-            option(value="fiction" selected= "fiction"===theBook.genre) Fiction
-            option(value="non-fiction" selected= "non-fiction"===theBook.genre) Non-fiction
-            option(value="biography" selected= "fiction"===theBook.genre) Biography
-            option(value="fan-fiction" selected= "fan-fiction"===theBook.genre) Fan-fiction
-            
-    div
-      input(type="submit")
+  .container
+    h1 Update Book
+    form(action='/books/' + theBook.book_id + '/update?_method=put' method="post").form.form-inline
+      .row
+        .col-md-12
+          p= 'Author: ' + theBook.first + ' ' + theBook.last
+        .col-md-12
+          fieldset.form-group
+            label(for='authorFirst') Book Title
+            input.form-control(type="text" name="book_title" value= theBook.title)
+        .col-md-12
+          fieldset.form-group
+            label Genre
+              select.form-control(type="select" name="book_genre")
+                option(value="fiction" selected= "fiction"===theBook.genre) Fiction
+                option(value="non-fiction" selected= "non-fiction"===theBook.genre) Non-fiction
+                option(value="biography" selected= "fiction"===theBook.genre) Biography
+                option(value="fan-fiction" selected= "fan-fiction"===theBook.genre) Fan-fiction
+        .col-md-12
+          button.btn.btn-default.btn-primary(type='submit') Submit

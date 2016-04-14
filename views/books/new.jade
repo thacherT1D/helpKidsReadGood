@@ -9,7 +9,23 @@ block content
         .col-md-12
           fieldset.form-group
             label(for='book_title') Book Title
-            input.form-control(type='text', name='book_title')          
+            input.form-control(type='text', name='book_title')
         .col-md-12
-          button.btn.btn-default(type='submit') Submit
+          fieldset.form-group
+            label(for='book_description') Book Description
+            input.form-control(type='text', name='book_description')
+        .col-md-12
+          fieldset.form-group
+            label(for='book_url') Book URL
+            input.form-control(type='text', name='book_url')
+        .col-md-12
+          fieldset.form-group
+            label Genre
+              select.form-control(type="select" name="book_genre")
+                option Fiction
+                option Non-fiction
+                option Biography
+                option Fan-fiction
+        .col-md-12
+          button.btn.btn-default.btn-primary(type='submit') Submit
         

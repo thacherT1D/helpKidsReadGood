@@ -1,18 +1,27 @@
 extends ../layout
 
 block content
-  h1 Update Author
+  .container
+    h1 Update Author
 
-  form(action='/authors/' + theAuthor.id + '/update?_method=put' method="post")
-    div
-      div Author First Name
-        input(type="text" name="author_first" value= theAuthor.first)
-      div Author Last Name
-        input(type="text" name="author_last" value= theAuthor.last)
-      div Author Bio
-        input(type="text" name="author_bio" value= theAuthor.bio)
-      div Author URL
-        input(type="text" name="author_url" value= theAuthor.url)
-      
-    div
-      input(type="submit")
+    form(action='/authors/' + theAuthor.id + '/update?_method=put' method="post").form.form-inline
+      .row
+        .col-md-12
+          fieldset.form-group
+            label(for='authorFirst') Author First Name
+            input.form-control(type='text', name='author_first' value= theAuthor.first)
+        .col-md-12
+          fieldset.form-group
+            label(for='authorLast') Author Last Name
+            input.form-control(type='text', name='author_last' value= theAuthor.last)
+        .col-md-12
+          fieldset.form-group
+            label(for='authorLast') Author Bio
+            input.form-control(type='text', name='author_bio' value= theAuthor.bio)
+        .col-md-12
+          fieldset.form-group
+            label(for='authorLast') Author URL
+            input.form-control(type='text', name='author_url' value= theAuthor.url)
+        .col-md-12
+          button.btn.btn-default.btn-primary(type='submit') Submit
+          

@@ -1,12 +1,19 @@
 extends ../layout
 
 block content
-  h1= theBook.title
-  h2= theBook.author
+  .container
+    h1= theBook.title
+    .col-md-6
+      img.img-responsive(src=theBook.url, alt='No Book Image Available')
+    .col-md-6
+    p= theBook.first + ' ' + theBook.last
+    p= theBook.description
 
 
-  form(action='/books/' + theBook.title + '?_method=delete' method="POST")
-    div
-      a(href="/books/" + theBook.id + '/update') Edit
-    div
-      button(type="submit" value="Delete") Delete
+    form(action='/books/' + theBook.id + '?_method=delete' method="POST")
+      div
+        a.btn.btn-primary(href="/books/" + theBook.id + '/update').button Edit
+
+        button.btn.btn-primary(type="submit" value="Delete").button Delete
+        
+        a.btn.btn-primary(href="/books/").button Back to Books
