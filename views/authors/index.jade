@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1 authors
+  h1 Authors
 
   a(href="/authors/new") New Author
 
@@ -11,9 +11,9 @@ block content
           th ID
           th Author
 
-
       tbody
         for author in allAuthors
           tr
             td= author.id
-            td= author.first
+            td 
+              a(href='/authors/' + author.id)= author.first + ' ' + author.last

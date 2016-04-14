@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  h1 Update Author
+
+  form(action='/authors/' + theAuthor.id + '/update?_method=put' method="post")
+    div
+      div Author First Name
+        input(type="text" name="book_title" value= theAuthor.first)
+      div Author Last Name
+        input(type="text" name="book_title" value= theAuthor.last)
+      div Author Bio
+        input(type="text" name="book_author" value= theAuthor.bio)
+      div Author URL
+        input(type="text" name="book_title" value= theAuthor.url)
+      
+    div
+      input(type="submit")

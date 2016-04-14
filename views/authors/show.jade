@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1= theAuthor.first
+  h2= theAuthor.last
+
+
+  form(action='/authors/' + theAuthor.id + '?_method=delete' method="POST")
+    div
+      a(href="/authors/" + theAuthor.id + '/update') Edit
+    div
+      button(type="submit" value="Delete") Delete

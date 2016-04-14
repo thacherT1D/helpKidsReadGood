@@ -5,13 +5,13 @@ block content
 
   a(href="/books/new") New Book
 
-  table
+  table.table.table-striped
       thead
         tr
           th ID
           th Title
-          th Author
           th Genre
+          th Author
 
       tbody
         for book in allBooks
@@ -19,5 +19,5 @@ block content
             td= book.id
             td
               a(href='/books/' + book.id)= book.title
-            td= book.author
             td= book.genre
+            td=book.first + ' ' + book.last

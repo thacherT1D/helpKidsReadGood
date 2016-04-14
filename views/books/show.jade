@@ -5,7 +5,7 @@ block content
   h2= theBook.author
 
 
-  form(action='/books/' + theBook.id + '?_method=delete' method="POST")
+  form(action='/books/' + theBook.title + '?_method=delete' method="POST")
     div
       a(href="/books/" + theBook.id + '/update') Edit
     div

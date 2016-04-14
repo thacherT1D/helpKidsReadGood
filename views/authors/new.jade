@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1 New Author
+
+  form(action="/authors", method="post")
+    div
+      div Author First Name
+        input(type="text" name="author_first")
+
+      div Author Last Name
+        input(type="text" name="author_last")
+
+      div
+        input(type="submit")

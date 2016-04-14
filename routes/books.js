@@ -7,7 +7,12 @@ function books() {
 }
 
 router.get('/books', function(req, res, next) {
-  books().select().then(function (records) {
+  books()
+  .join('author_books', 'books.id', 'author_books.book_id')
+  .join('authors', 'author_books.author_id', 'authors.id')
+  .select()
+  .then(function (records) {
+    console.log(records);
     res.render('books/index', {allBooks: records});
   });
 });
@@ -19,8 +24,9 @@ router.get('/books/new', function(req, res, next) {
 router.post('/books', function(req, res, next) {
   books().insert({
     title: req.body.book_title,
-    author: req.body.book_author,
-    genre: req.body.book_genre
+    genre: req.body.book_genre,
+    desription: req.body.book_description,
+    url: req.body.book_url
   }).then(function () {
     res.redirect('/books');
   });
@@ -47,8 +53,9 @@ router.delete('/books/:id', function(req, res, next) {
 router.put('/books/:id/update', function(req, res, next) {
   books().select().where({id: req.params.id}).first().update({
     title: req.body.book_title,
-    author: req.body.book_author,
-    genre: req.body.book_genre
+    genre: req.body.book_genre,
+    description: req.body.book_description,
+    url: req.body.book_url
   }).then(function () {
     res.redirect('/books');
   });
