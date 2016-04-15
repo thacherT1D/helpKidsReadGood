@@ -6,10 +6,27 @@ function authors() {
   return knex('authors');
 }
 
-router.get('/authors', function(req, res, next) {
-  authors().select()
-  .then(function (records) {
-    res.render('authors/index', {allAuthors: records});
+// router.get('/authors', function(req, res, next) {
+//   authors().select()
+//   .then(function (records) {
+//     res.render('authors/index', {allAuthors: records});
+//   });
+// });
+
+router.get('/authors', (req, res, next) => {
+  const authors = knex('authors');
+  const books = knex('books').join('author_books', 'books.id', 'author_books.book_id');
+  Promise.all([authors, books]).then(function(data) {
+    console.log(data);
+    for (var i = 0; i < data[0].length; i++) {
+      data[0][i].bookArray = [];
+      for (var j = 0; j < data[1].length; j++) {
+        if(data[1][j].author_id === data[0][i].id) {
+          data[0][i].bookArray.push(data[1][j].title);
+        }
+      }
+    }
+    res.render('authors/index', {allAuthors: data[0]});
   });
 });
 

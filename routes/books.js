@@ -24,7 +24,7 @@ router.get('/books', (req, res, next) => {
       data[0][i].authorArray = [];
       for (var j = 0; j < data[1].length; j++) {
         if(data[1][j].book_id === data[0][i].id) {
-          data[0][i].authorArray.push({first: data[1][j].first, last: data[1][j].last});
+          data[0][i].authorArray.push(data[1][j].first + ' ' + data[1][j].last);
         }
       }
     }
@@ -48,9 +48,8 @@ router.post('/books', function(req, res, next) {
 });
 
 router.get('/books/:id', function(req, res, next) {
-  books().join('author_books', 'books.id', 'author_books.book_id')
-  .join('authors', 'author_books.author_id', 'authors.id')
-  .where({'books.id': req.params.id})
+  books()
+  .where('id', req.params.id)
   .first()
   .then(function (record) {
     res.render('books/show', {theBook: record});
