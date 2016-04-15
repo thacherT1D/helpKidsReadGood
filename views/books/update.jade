@@ -3,7 +3,7 @@ extends ../layout
 block content
   .container
     h1 Update Book
-    form(action='/books/' + theBook.book_id + '/update?_method=put' method="post").form.form-inline
+    form(action='/books/' + theBook.id + '/update?_method=put' method="post").form.form-inline
       .row
         .col-md-12
           h4= theBook.title
