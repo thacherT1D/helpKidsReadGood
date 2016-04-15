@@ -8,7 +8,8 @@ block content
         .col-md-12
           h4= theBook.title
         .col-md-12
-          h4= 'Author: ' + theBook.first + ' ' + theBook.last
+          for author in authors
+            h4= 'By ' + author.first + ' ' + author.last
         .col-md-12
           fieldset.form-group
             label(for='bookTitle') Book Title
@@ -16,11 +17,11 @@ block content
         .col-md-12
           fieldset.form-group
             label(for='authorDescription') Book Description
-            input.form-control(type="text" name="book_description" value= theBook.description)
+            textarea.form-control(name="book_description") #{theBook.description}
         .col-md-12
           fieldset.form-group
             label(for='bookUrl') Book Url
-            input.form-control(type="text" name="book_url" value= theBook.url)
+            textarea.form-control(name="book_url") #{theBook.url}
         .col-md-12
           fieldset.form-group
             label(for='bookGenre') Genre

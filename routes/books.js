@@ -48,24 +48,30 @@ router.post('/books', function(req, res, next) {
 });
 
 router.get('/books/:id', function(req, res, next) {
-  books().where({'books.id': req.params.id})
-  .join('author_books', 'books.id', 'author_books.book_id')
-  .join('authors', 'author_books.author_id', 'authors.id')
-  .first()
-  .then(function (record) {
-    res.render('books/show', {theBook: record});
+  books().where({'books.id': req.params.id}).first().then(function (book) {
+    return knex('authors').join('author_books', 'authors.id', 'author_books.author_id').where('author_books.book_id', book.id).then(function(authors) {
+      res.render('books/show', {theBook: book, authors: authors});
+    });
   });
 });
 
 router.get('/books/:id/update', function(req, res, next) {
-  books().where({'books.id': req.params.id})
-  .join('author_books', 'books.id', 'author_books.book_id')
-  .join('authors', 'author_books.author_id', 'authors.id')
-  .first()
-  .then(function (record) {
-    res.render('books/update', {theBook: record});
+  books().where({'books.id': req.params.id}).first().then(function (book) {
+    return knex('authors').join('author_books', 'authors.id', 'author_books.author_id').where('author_books.book_id', book.id).then(function(authors) {
+      res.render('books/update', {theBook: book, authors: authors});
+    });
   });
 });
+
+// router.get('/books/:id/update', function(req, res, next) {
+//   books().where({'books.id': req.params.id})
+//   .join('author_books', 'books.id', 'author_books.book_id')
+//   .join('authors', 'author_books.author_id', 'authors.id')
+//   .first()
+//   .then(function (record) {
+//     res.render('books/update', {theBook: record});
+//   });
+// });
 
 router.delete('/books/:id', function(req, res, next) {
   books().del().where({id: req.params.id}).then(function () {

@@ -4,9 +4,11 @@ block content
   .container
     h1= theBook.title
     .col-md-6
-      img.img-responsive(src=theBook.url, alt='No Book Image Available')
+      img.img-responsive(src= theBook.url, alt='Book Image')
     .col-md-6
-    p= theBook.first + ' ' + theBook.last
+    for author in authors
+      p= author.first + ' ' + author.last 
+    
     p= theBook.description
 
 
