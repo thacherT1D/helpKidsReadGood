@@ -18,6 +18,7 @@ block content
             td
               a(href='/books/' + book.book_id)= book.title
             td= book.genre
-            td=book.first + ' ' + book.last
+            for author in book.authorArray
+              td= author.first + ' ' + author.last
 
   a.btn.btn-primary(href='/books/new', role='button') New Book

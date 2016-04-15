@@ -16,6 +16,22 @@ function books() {
 //   });
 // });
 
+router.get('/books', (req, res, next) => {
+  const books = knex('books');
+  const authors = knex('authors').join('author_books', 'authors.id', 'author_books.author_id');
+  Promise.all([books, authors]).then(function(data) {
+    for (var i = 0; i < data[0].length; i++) {
+      data[0][i].authorArray = [];
+      for (var j = 0; j < data[1].length; j++) {
+        if(data[1][j].book_id === data[0][i].id) {
+          data[0][i].authorArray.push({first: data[1][j].first, last: data[1][j].last});
+        }
+      }
+    }
+    res.render('books/index', {allBooks: data[0]});
+  });
+});
+
 router.get('/books/new', function(req, res, next) {
   res.render('books/new');
 });
