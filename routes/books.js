@@ -48,8 +48,9 @@ router.post('/books', function(req, res, next) {
 });
 
 router.get('/books/:id', function(req, res, next) {
-  books()
-  .where('id', req.params.id)
+  books().where({'books.id': req.params.id})
+  .join('author_books', 'books.id', 'author_books.book_id')
+  .join('authors', 'author_books.author_id', 'authors.id')
   .first()
   .then(function (record) {
     res.render('books/show', {theBook: record});
@@ -62,7 +63,6 @@ router.get('/books/:id/update', function(req, res, next) {
   .join('authors', 'author_books.author_id', 'authors.id')
   .first()
   .then(function (record) {
-    console.log(record);
     res.render('books/update', {theBook: record});
   });
 });

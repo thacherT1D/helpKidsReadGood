@@ -8,6 +8,8 @@ a {
 }
 .button {
   margin: 10px 5px 10px 5px;
+  font-size: 20px;
+  width: 400px;
 }
 h2 {
   text-align: center;
@@ -15,4 +17,13 @@ h2 {
 }
 img {
   margin: 10px;
+}
+.footer {
+  margin-top: 50px;
+}
+.form-group {
+  margin: 10px;
+}
+label {
+  margin-right: 10px;
 }

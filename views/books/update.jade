@@ -6,18 +6,30 @@ block content
     form(action='/books/' + theBook.book_id + '/update?_method=put' method="post").form.form-inline
       .row
         .col-md-12
-          p= 'Author: ' + theBook.first + ' ' + theBook.last
+          h4= theBook.title
+        .col-md-12
+          h4= 'Author: ' + theBook.first + ' ' + theBook.last
         .col-md-12
           fieldset.form-group
-            label(for='authorFirst') Book Title
+            label(for='bookTitle') Book Title
             input.form-control(type="text" name="book_title" value= theBook.title)
         .col-md-12
           fieldset.form-group
-            label Genre
-              select.form-control(type="select" name="book_genre")
-                option(value="fiction" selected= "fiction"===theBook.genre) Fiction
-                option(value="non-fiction" selected= "non-fiction"===theBook.genre) Non-fiction
-                option(value="biography" selected= "fiction"===theBook.genre) Biography
-                option(value="fan-fiction" selected= "fan-fiction"===theBook.genre) Fan-fiction
+            label(for='authorDescription') Book Description
+            input.form-control(type="text" name="book_description" value= theBook.description)
         .col-md-12
+          fieldset.form-group
+            label(for='bookUrl') Book Url
+            input.form-control(type="text" name="book_url" value= theBook.url)
+        .col-md-12
+          fieldset.form-group
+            label(for='bookGenre') Genre
+            select.form-control(type="select" name="book_genre")
+              option(value="javascript" selected= "fiction"===theBook.genre) Javascript
+              option(value="Python" selected= "Python"===theBook.genre) Python
+              option(value="CS" selected= "CS"===theBook.genre) Computer Science
+              option(value="non-fiction" selected= "non-fiction"===theBook.genre) Non-fiction
+              option(value="biography" selected= "fiction"===theBook.genre) Biography
+                
+        .col-md-12.button
           button.btn.btn-default.btn-primary(type='submit') Submit
